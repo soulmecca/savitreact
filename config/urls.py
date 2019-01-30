@@ -23,6 +23,7 @@ urlpatterns = [
         "images/",
         include("savitreact.images.urls", namespace="images")
     )
+    
     ,
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
