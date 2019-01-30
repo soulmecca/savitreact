@@ -41,6 +41,7 @@ USE_TZ = True
 DATABASES = {
     'default': env.db('DATABASE_URL', default='postgres:///savitreact'),
 }
+
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # URLS
