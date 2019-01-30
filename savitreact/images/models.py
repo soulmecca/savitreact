@@ -1,5 +1,6 @@
 from django.db import models
 from savitreact.users import models as user_models
+from django.utils.encoding import python_2_unicode_compatible
 
 # Create your models here.
 class TimeStampedModel(models.Model):
@@ -11,7 +12,7 @@ class TimeStampedModel(models.Model):
         abstract = True
 
 
-
+@python_2_unicode_compatible
 class Image(TimeStampedModel):
 
     file = models.ImageField()
@@ -19,15 +20,24 @@ class Image(TimeStampedModel):
     caption = models.TextField()
     creator = models.ForeignKey(user_models.User, null=True, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return '{} - {}'.format(self.location, self.caption)
 
+@python_2_unicode_compatible
 class Comment(TimeStampedModel):
 
     message = models.TextField()
     creator = models.ForeignKey(user_models.User, null=True, on_delete=models.CASCADE)
     image = models.ForeignKey(Image, null=True, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.message
 
+@python_2_unicode_compatible
 class Like(TimeStampedModel):
 
     creator = models.ForeignKey(user_models.User, null=True, on_delete=models.CASCADE)
     image = models.ForeignKey(Image, null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return 'User: {} - Image Caption: {}'.format(self.creator.username, self.image.caption)
