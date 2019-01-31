@@ -69,3 +69,16 @@ class CreateCommentOnImage(APIView):
             return Response(data = serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class DeleteCommentOnImage(APIView):
+
+    def delete(self, request, id, format=None):
+
+        user = request.user
+        
+        try: 
+            found_comment = models.Comment.objects.get(id=id, creator=user)
+            found_comment.delete()
+            return Response(status = status.HTTP_204_NO_CONTENT)
+        except models.Comment.DoesNotExist:
+            return Response(status = status.HTTP_404_NOT_FOUND)

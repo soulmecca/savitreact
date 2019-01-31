@@ -10,14 +10,19 @@ urlpatterns = [
         name="feed"
     ),
     path(
-        '<int:id>/like/',
+        '<int:id>/likes/',
         view=views.LikeImage.as_view(),
         name='like_image'
     ),
     path(
-        '<int:id>/comment/',
+        '<int:id>/comments/',
         view=views.CreateCommentOnImage.as_view(),
         name='create_comment'
-    )    
+    ),
+    path(
+        'comments/<int:id>',
+        view=views.DeleteCommentOnImage.as_view(),
+        name='delete_comment'
+    )        
 ]
 
