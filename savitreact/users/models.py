@@ -26,8 +26,8 @@ class User(AbstractUser):
     bio = TextField(null=True)
     phone = CharField(max_length=140, null=True)
     gender = CharField(max_length=80, choices=GENDER_CHOICES, null=True)
-    followers = ManyToManyField("self")
-    followings = ManyToManyField("self")
+    followers = ManyToManyField("self", blank=True)
+    followings = ManyToManyField("self", blank=True)
 
 
     def get_absolute_url(self):
