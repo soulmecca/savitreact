@@ -28,6 +28,11 @@ urlpatterns = [
         'comments/<int:id>',
         view=views.DeleteCommentOnImage.as_view(),
         name='delete_comment'
-    )        
+    ),
+    path(
+        'search/',
+        view=views.Search.as_view(),
+        name='search'
+    ),            
 ]
 

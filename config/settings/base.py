@@ -68,8 +68,9 @@ THIRD_PARTY_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'rest_framework', # REST framework
-    'taggit', # Tags for postings
+    'rest_framework',
+    "taggit",
+    'taggit_serializer',
 ]
 LOCAL_APPS = [
     'savitreact.users.apps.UsersAppConfig',
@@ -252,3 +253,4 @@ SOCIALACCOUNT_ADAPTER = 'savitreact.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+TAGGIT_CASE_INSENSITIVE = True
