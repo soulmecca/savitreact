@@ -5,7 +5,8 @@ from savitreact.users.views import (
     FollowUser,
     UnfollowUser,
     UserProfile,
-    UserFollowers
+    UserFollowers,
+    UserFollowings
 )
 
 app_name = "users"
@@ -15,5 +16,6 @@ urlpatterns = [
     path("<int:id>/unfollow", view=UnfollowUser.as_view(), name="unfollow_user"),
     path("<str:username>", view=UserProfile.as_view(), name="user_profile"),
     path("<str:username>/followers", view=UserFollowers.as_view(), name="user_followers"),
+    path("<str:username>/followings", view=UserFollowings.as_view(), name="user_followingss"),
 ]
 
