@@ -69,6 +69,7 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework', # REST framework
+    'taggit', # Tags for postings
 ]
 LOCAL_APPS = [
     'savitreact.users.apps.UsersAppConfig',
