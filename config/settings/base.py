@@ -75,7 +75,8 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'savitreact.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
-    'savitreact.images.apps.ImagesConfig'
+    'savitreact.images.apps.ImagesConfig', # Images app
+    'savitreact.notifications.apps.NotificationsConfig' # Notifications app
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
