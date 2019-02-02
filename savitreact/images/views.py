@@ -7,7 +7,7 @@ from savitreact.users import serializers as user_serializer
 from savitreact.notifications import views as notifications_view
 from savitreact.users import models as user_models
 
-class Feed(APIView):
+class Images(APIView):
 
     def get(self, request, format=None):
     
@@ -30,6 +30,20 @@ class Feed(APIView):
         sorted_list = sorted(image_list, key=lambda image: image.created_at, reverse=True)
         serializer = serializers.ImageSerializer(sorted_list, many=True)
         return Response(data=serializer.data)
+
+    
+    def post(self, request, format=None):
+
+        user = request.user
+
+        serializer = serializers.CreateAndEditImageSerializer(data = request.data)
+
+        if serializer.is_valid():
+            serializer.save(creator = user)
+            return Response(data = serializer.data, status = status.HTTP_201_CREATED)
+        else:
+            return Response(data = serializer.errors, status = status.HTTP_400_BAD_REQUEST)
+
 
 
 class LikeImage(APIView):
