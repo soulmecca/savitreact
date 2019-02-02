@@ -10,6 +10,11 @@ urlpatterns = [
         name="feed"
     ),
     path(
+        '<int:id>/',
+        view = views.ImageDetail.as_view(),
+        name = "image_detail"
+    ),
+    path(
         '<int:id>/like/',
         view=views.LikeImage.as_view(),
         name='like_image'
