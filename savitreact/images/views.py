@@ -49,6 +49,8 @@ class LikeImage(APIView):
             )
             new_like.save()
 
+            notifications_view.create_notification(user, found_image.creator, 'like', found_image)
+
         return Response(status=status.HTTP_201_CREATED)
 
 
