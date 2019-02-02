@@ -15,12 +15,12 @@ urlpatterns = [
         name = "image_detail"
     ),
     path(
-        '<int:id>/like/',
+        '<int:id>/likes/',
         view=views.LikeImage.as_view(),
         name='like_image'
     ),
     path(
-        '<int:id>/unlike/',
+        '<int:id>/unlikes/',
         view=views.UnLikeImage.as_view(),
         name='unlike_image'
     ),    
