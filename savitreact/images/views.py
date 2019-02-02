@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from . import models, serializers
+from savitreact.notifications import views as notifications_view
 
 class Feed(APIView):
 
@@ -89,6 +90,14 @@ class CreateCommentOnImage(APIView):
 
         if serializer.is_valid():
             serializer.save(creator = user, image = found_image)
+            notifications_view.create_notification(
+                user, 
+                found_image.creator, 
+                'comment', 
+                found_image, 
+                serializer.data["message"]
+            )
+
             return Response(data = serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)

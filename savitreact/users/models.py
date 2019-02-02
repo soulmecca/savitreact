@@ -22,8 +22,8 @@ class User(AbstractUser):
     # around the globe.
     profile_image = ImageField(null=True)
     name = CharField(_("Name of User"), blank=True, max_length=255)
-    website = URLField(null=True)
-    bio = TextField(null=True)
+    website = URLField(null=True, blank=True)
+    bio = TextField(null=True, blank=True)
     phone = CharField(max_length=140, null=True)
     gender = CharField(max_length=80, choices=GENDER_CHOICES, null=True)
     followers = ManyToManyField("self", blank=True)

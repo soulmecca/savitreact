@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from . import models, serializers
+from savitreact.notifications import views as notifications_view
 
 class ExploreUsers(APIView):
 
@@ -26,6 +27,7 @@ class FollowUser(APIView):
         
         user.followings.add(user_to_follow)
         user.save()
+        notifications_view.create_notification( user, user_to_follow,'follow')
 
         return Response(status = status.HTTP_200_OK)
 
