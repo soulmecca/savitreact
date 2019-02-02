@@ -15,7 +15,6 @@ class ListUserSerializer(serializers.ModelSerializer):
 
 
 
-
 class UserProfileSerializer(serializers.ModelSerializer):
 
     images = image_serializers.UserProfileImageSerializer(many=True)

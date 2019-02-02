@@ -22,6 +22,10 @@ urlpatterns = [
     path (
         "images/",
         include("savitreact.images.urls", namespace="images")
+    ),
+    path (
+        "notifications/",
+        include("savitreact.notifications.urls", namespace="notifications")
     )
     
     ,
