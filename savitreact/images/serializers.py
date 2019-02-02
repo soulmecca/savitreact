@@ -75,3 +75,16 @@ class SmallImageSerializer(serializers.ModelSerializer):
         fields = (
             'file',
         )
+
+
+class CreateAndEditImageSerializer(serializers.ModelSerializer):
+
+    # file = serializers.FileField(required = False)
+
+    class Meta:
+        model = models.Image
+        fields = (
+            'file',
+            'location',
+            'caption'
+        )
