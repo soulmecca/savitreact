@@ -25,6 +25,11 @@ urlpatterns = [
         name='create_comment'
     ),
     path(
+        '<int:image_id>/comments/<int:comment_id>/',
+        view=views.ModerateCommentOnImage.as_view(),
+        name='moderate_comment'
+    ),    
+    path(
         'comments/<int:id>',
         view=views.DeleteCommentOnImage.as_view(),
         name='delete_comment'
