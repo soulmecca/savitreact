@@ -7,7 +7,8 @@ from savitreact.users.views import (
     UserProfile,
     UserFollowers,
     UserFollowings,
-    Search
+    Search,
+    ChangePassword
 )
 
 app_name = "users"
@@ -21,5 +22,6 @@ urlpatterns = [
     path('search/',view = Search.as_view(),name='search'),    
 
     path("<str:username>", view=UserProfile.as_view(), name="user_profile"),
+    path("<str:username>/password", view=ChangePassword.as_view(), name="change_password"),
 ]
 
