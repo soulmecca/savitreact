@@ -18,6 +18,9 @@ class ListUserSerializer(serializers.ModelSerializer):
 class UserProfileSerializer(serializers.ModelSerializer):
 
     images = image_serializers.UserProfileImageSerializer(many=True)
+    post_count = serializers.ReadOnlyField()
+    followers_count = serializers.ReadOnlyField()
+    followings_count = serializers.ReadOnlyField()
 
     class Meta:
         model = models.User
