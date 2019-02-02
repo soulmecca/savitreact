@@ -68,12 +68,14 @@ THIRD_PARTY_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
     'rest_framework', # REST framework
     'rest_framework.authtoken',
     "taggit", # Tag for photos
     'taggit_serializer', # Teg serializer
     'rest_auth', # Rest auth
     'rest_auth.registration', # Enable registration
+    
 ]
 LOCAL_APPS = [
     'savitreact.users.apps.UsersAppConfig',

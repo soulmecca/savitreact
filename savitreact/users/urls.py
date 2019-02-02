@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 
 from savitreact.users.views import (
     ExploreUsers,
@@ -8,7 +8,8 @@ from savitreact.users.views import (
     UserFollowers,
     UserFollowings,
     Search,
-    ChangePassword
+    ChangePassword,
+    FacebookLogin
 )
 
 app_name = "users"
@@ -23,5 +24,7 @@ urlpatterns = [
 
     path("<str:username>", view=UserProfile.as_view(), name="user_profile"),
     path("<str:username>/password", view=ChangePassword.as_view(), name="change_password"),
+
+    path('login/facebook/', FacebookLogin.as_view(), name='fb_login')
 ]
 
