@@ -410,6 +410,7 @@ module.exports = function(webpackEnv) {
                 importLoaders: 1,
                 sourceMap: isEnvProduction && shouldUseSourceMap,
                 modules: true,
+                camelCase: true,
                 getLocalIdent: getCSSModuleLocalIdent,
               }),
             },
