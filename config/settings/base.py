@@ -69,20 +69,20 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
-    'rest_framework', # REST framework
+    'rest_framework',  # REST framework
     'rest_framework.authtoken',
-    "taggit", # Tag for photos
-    'taggit_serializer', # Teg serializer
-    'rest_auth', # Rest auth
-    'rest_auth.registration', # Enable registration
-    'corsheaders' # To accept requests from React
-    
+    "taggit",  # Tag for photos
+    'taggit_serializer',  # Teg serializer
+    'rest_auth',  # Rest auth
+    'rest_auth.registration',  # Enable registration
+    'corsheaders'  # To accept requests from React
+
 ]
 LOCAL_APPS = [
     'savitreact.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
-    'savitreact.images.apps.ImagesConfig', # Images app
-    'savitreact.notifications.apps.NotificationsConfig' # Notifications app
+    'savitreact.images.apps.ImagesConfig',  # Images app
+    'savitreact.notifications.apps.NotificationsConfig'  # Notifications app
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -253,7 +253,7 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username'
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_EMAIL_REQUIRED = False  # Chanced from True
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
-ACCOUNT_EMAIL_VERIFICATION = 'none' # Changed from 'mandatory'
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # Changed from 'mandatory'
 # https://django-allauth.readthedocs.io/en/latest/configuration.html
 ACCOUNT_ADAPTER = 'savitreact.users.adapters.AccountAdapter'
 # https://django-allauth.readthedocs.io/en/latest/configuration.html

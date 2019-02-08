@@ -9,29 +9,27 @@ from savitreact import views
 
 urlpatterns = [
 
-    path("api-token-auth/", obtain_jwt_token),    
+    path("api-token-auth/", obtain_jwt_token),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management
     re_path('rest-auth/', include('rest_auth.urls')),
     re_path('rest-auth/registration/', include('rest_auth.registration.urls')),
-    
+
     path(
         "users/",
         include("savitreact.users.urls", namespace="users"),
     ),
-    path (
+    path(
         "images/",
         include("savitreact.images.urls", namespace="images")
     ),
-    path (
+    path(
         "notifications/",
         include("savitreact.notifications.urls", namespace="notifications")
-    )
-    
-    ,
+    ),
     path("accounts/", include("allauth.urls")),
-    path('', views.ReactAppView.as_view()),
+    re_path(r'^', views.ReactAppView.as_view()),
     # Your stuff: custom urls includes go here
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
