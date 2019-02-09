@@ -6,11 +6,10 @@ import { ConnectedRouter, routerMiddleware } from "connected-react-router";
 import reduxThunk from "redux-thunk";
 import I18n from "redux-i18n";
 import history from "./history";
-import { translations } from "translations";
-
-import "index.css";
-import App from "App";
+import App from "components/App";
 import reducers from "redux/reducers";
+
+import { translations } from "translations";
 
 const middlewares = [reduxThunk, routerMiddleware(history)];
 const env = process.env.NODE_ENV;
