@@ -7,5 +7,5 @@ import history from "../../history";
 export default combineReducers({
 	router: connectRouter(history),
 	auth: authReducer,
-	lan: i18nState
+	i18nState
 });

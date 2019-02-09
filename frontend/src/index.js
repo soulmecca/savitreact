@@ -4,7 +4,9 @@ import { Provider } from "react-redux";
 import { createStore, compose, applyMiddleware } from "redux";
 import { ConnectedRouter, routerMiddleware } from "connected-react-router";
 import reduxThunk from "redux-thunk";
+import I18n from "redux-i18n";
 import history from "./history";
+import { translations } from "translations";
 
 import "index.css";
 import App from "App";
@@ -27,7 +29,9 @@ const store = createStore(
 ReactDOM.render(
 	<Provider store={store}>
 		<ConnectedRouter history={history}>
-			<App />
+			<I18n translations={translations} initialLang="en" fallbackLang="en">
+				<App />
+			</I18n>
 		</ConnectedRouter>
 	</Provider>,
 	document.getElementById("root")
