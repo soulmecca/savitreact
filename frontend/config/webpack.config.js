@@ -415,6 +415,8 @@ module.exports = function(webpackEnv) {
 							use: getStyleLoaders(
 								{
 									importLoaders: 2,
+									modules: true,
+									camelCase: true,
 									sourceMap: isEnvProduction && shouldUseSourceMap
 								},
 								{
