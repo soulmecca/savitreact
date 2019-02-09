@@ -7,10 +7,12 @@ charset = utf-8
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
+indent_style = space
+indent_size = 3
 
 [*.{py,rst,ini}]
 indent_style = space
-indent_size = 4
+indent_size = 3
 
 [*.py]
 line_length=120
@@ -20,7 +22,7 @@ default_section=THIRDPARTY
 
 [*.{html,css,scss,json,yml}]
 indent_style = space
-indent_size = 2
+indent_size = 3
 
 [*.md]
 trim_trailing_whitespace = false
@@ -30,4 +32,4 @@ indent_style = tab
 
 [nginx.conf]
 indent_style = space
-indent_size = 2
+indent_size = 3

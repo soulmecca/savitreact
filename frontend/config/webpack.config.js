@@ -403,6 +403,7 @@ module.exports = function(webpackEnv) {
 								sourceMap: isEnvProduction && shouldUseSourceMap,
 								modules: true,
 								camelCase: true,
+								localIdentName: "[name]__[local]___[hash:base64:5]",
 								getLocalIdent: getCSSModuleLocalIdent
 							})
 						},
@@ -417,6 +418,7 @@ module.exports = function(webpackEnv) {
 									importLoaders: 2,
 									modules: true,
 									camelCase: true,
+									localIdentName: "[name]__[local]___[hash:base64:5]",
 									sourceMap: isEnvProduction && shouldUseSourceMap
 								},
 								{
@@ -443,6 +445,7 @@ module.exports = function(webpackEnv) {
 									sourceMap: isEnvProduction && shouldUseSourceMap,
 									modules: true,
 									camelCase: true,
+									localIdentName: "[name]__[local]___[hash:base64:5]",
 									getLocalIdent: getCSSModuleLocalIdent
 								},
 								{
