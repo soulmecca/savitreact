@@ -1,15 +1,10 @@
-import React, { Component } from "react";
-import styles from "./styles.scss";
-import Footer from "components/Footer";
+import { connect } from "react-redux";
+import Container from "./container";
 
-class App extends Component {
-	render() {
-		return (
-			<div className={styles.app}>
-				<Footer />
-			</div>
-		);
-	}
-}
-
-export default App;
+const mapStateToProps = (state, ownProps) => {
+   const { auth } = state;
+   return {
+      isLoggedIn: auth.isLoggedIn
+   };
+};
+export default connect(mapStateToProps)(Container);
