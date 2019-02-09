@@ -8,10 +8,18 @@ import "index.css";
 import App from "App";
 import reducers from "redux/reducers";
 
+const middlewares = [reduxThunk];
+const env = process.env.NODE_ENV;
+
+if (env === "development") {
+	const { logger } = require("redux-logger");
+	middlewares.push(logger);
+}
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
 	reducers,
-	composeEnhancers(applyMiddleware(reduxThunk))
+	composeEnhancers(applyMiddleware(...middlewares))
 );
 
 ReactDOM.render(
