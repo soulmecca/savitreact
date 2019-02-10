@@ -2,25 +2,26 @@ import React from "react";
 import styles from "./styles.scss";
 
 const Auth = (props, context) => (
-   <main className={StyleSheet.auth}>
+   <main className={styles.auth}>
       <div className={styles.column}>
          <img
+            className={styles.phone}
             src={require("images/phone.png")}
             alt="Checkout our app. Its cool"
          />
       </div>
       <div className={styles.column}>
-         <div className={styles.witeBox} />
+         <div className={styles.whiteBox} />
          <div className={styles.appBox}>
             <span>Get the app</span>
             <div className={styles.appstores}>
                <img
                   src={require("images/ios.png")}
-                  alt="Downlaod it on the Apple Appstroe"
+                  alt="Downlaod it on the Apple Appstore"
                />
                <img
                   src={require("images/android.png")}
-                  alt="Downlaod it on the Appstore"
+                  alt="Downlaod it on the Apple Appstore"
                />
             </div>
          </div>

@@ -1,7 +1,7 @@
 .footer {
    max-width: $max-page-width;
    width: 100%;
-   margin: 55px auto;
+   margin: 0 auto;
    display: flex;
    align-items: center;
    justify-content: space-between;
@@ -13,7 +13,7 @@
       justify-content: center;
    }
    .column {
-      margin-bottom: 15px;
+      // margin-bottom: 15px;
       @include breakpoint(mobileonly) {
          margin-bottom: 0;
       }

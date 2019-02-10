@@ -1,0 +1,73 @@
+.auth {
+   width: 100%;
+   height: 95vh;
+   max-width: $max-page-width;
+   margin: 0 auto;
+   display: flex;
+   min-height: 100%;
+   justify-content: center;
+   align-items: center;
+   @include breakpoint("phone") {
+      margin-top: 10px;
+   }
+}
+.column {
+   // width: 40%;
+
+   @include breakpoint("phone") {
+      &:first-child {
+         display: none;
+      }
+   }
+   @include breakpoint("tablet") {
+      &:first-child {
+         display: none;
+      }
+   }
+   @include breakpoint("desktop") {
+      .phone {
+         width: 40vh;
+      }
+   }
+   @include breakpoint("desktop-xl") {
+      .phone {
+         width: 40vh;
+      }
+   }
+
+   border: 1px solid red;
+   &:last-child {
+      // width: 38%;
+      margin-left: 35px;
+      background-color: blue;
+      @include breakpoint("phone") {
+         width: 100%;
+         margin: 0;
+      }
+      @include breakpoint("tablet") {
+         width: 70%;
+         max-width: 350px;
+         margin: 0;
+      }
+   }
+   .app-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 35px;
+      .appstores {
+         margin-top: 25px;
+         img {
+            height: 40px;
+            &:first-child {
+               margin-right: 10px;
+            }
+         }
+      }
+   }
+   .white-box {
+      @include boxBorder(no);
+   }
+   .form-box {
+   }
+}
