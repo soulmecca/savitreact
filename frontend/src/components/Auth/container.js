@@ -8,7 +8,8 @@ class AuthContainer extends Component {
 
    render() {
       const { action } = this.state;
-      return <Auth action={action} chnageAction={this.changeAction} />;
+      // console.log("@@@@ ", action);
+      return <Auth action={action} changeAction={this.changeAction} />;
    }
 
    changeAction = () => {

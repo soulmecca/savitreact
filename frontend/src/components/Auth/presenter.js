@@ -1,32 +1,56 @@
 import React from "react";
 import styles from "./styles.scss";
 
-const Auth = (props, context) => (
-   <main className={styles.auth}>
-      <div className={styles.column}>
-         <img
-            className={styles.phone}
-            src={require("images/phone.png")}
-            alt="Checkout our app. Its cool"
-         />
-      </div>
-      <div className={styles.column}>
-         <div className={styles.whiteBox} />
-         <div className={styles.appBox}>
-            <span>Get the app</span>
-            <div className={styles.appstores}>
-               <img
-                  src={require("images/ios.png")}
-                  alt="Downlaod it on the Apple Appstore"
-               />
-               <img
-                  src={require("images/android.png")}
-                  alt="Downlaod it on the Apple Appstore"
-               />
+const Auth = (props, context) => {
+   const renderAuthSection = () => {
+      if (props.action === "login") {
+         return (
+            <p>
+               Don't have an account?{" "}
+               <span onClick={props.changeAction} className={styles.changeLink}>
+                  Sign up
+               </span>
+            </p>
+         );
+      } else if (props.action === "signup") {
+         return (
+            <p>
+               Have an account?{" "}
+               <span onClick={props.changeAction} className={styles.changeLink}>
+                  Log in
+               </span>
+            </p>
+         );
+      }
+   };
+
+   return (
+      <main className={styles.auth}>
+         <div className={styles.column}>
+            <img
+               className={styles.phone}
+               src={require("images/phone.png")}
+               alt="Checkout our app. Its cool"
+            />
+         </div>
+         <div className={styles.column}>
+            <div className={styles.whiteBox}>{renderAuthSection()}</div>
+            <div className={styles.appBox}>
+               <span>Get the app</span>
+               <div className={styles.appstores}>
+                  <img
+                     src={require("images/ios.png")}
+                     alt="Downlaod it on the Apple Appstore"
+                  />
+                  <img
+                     src={require("images/android.png")}
+                     alt="Downlaod it on the Apple Appstore"
+                  />
+               </div>
             </div>
          </div>
-      </div>
-   </main>
-);
+      </main>
+   );
+};
 
 export default Auth;
