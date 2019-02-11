@@ -24,3 +24,17 @@ export const usernameLogin = (username, password) => {
       // }
    };
 };
+
+export const createAccount = (username, password, email, name) => {
+   return async dispatch => {
+      const response = await loginApi.post("/registration", {
+         username,
+         password1: password,
+         password2: password,
+         email,
+         name
+      });
+
+      console.log("############## repsonse is ", response);
+   };
+};

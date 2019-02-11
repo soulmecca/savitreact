@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Auth from "./presenter";
-import { usernameLogin } from "../../redux/actions/auth";
+import { usernameLogin, createAccount } from "../../redux/actions/auth";
 
 class AuthContainer extends Component {
    state = {
-      action: "login"
+      action: "signup"
    };
 
    render() {
@@ -15,7 +15,8 @@ class AuthContainer extends Component {
          <Auth
             action={action}
             changeAction={this.changeAction}
-            onSubmit={this.onSubmit}
+            onSubmitLogin={this.onSubmitLogin}
+            onSubmitSignup={this.onSubmitSignup}
          />
       );
    }
@@ -31,12 +32,15 @@ class AuthContainer extends Component {
       });
    };
 
-   onSubmit = ({ username, password }) => {
+   onSubmitLogin = ({ username, password }) => {
       usernameLogin(username, password);
+   };
+   onSubmitSignup = ({ username, password, email, name }) => {
+      createAccount(username, password, email, name);
    };
 }
 
 export default connect(
    null,
-   { usernameLogin }
+   { usernameLogin, createAccount }
 )(AuthContainer);

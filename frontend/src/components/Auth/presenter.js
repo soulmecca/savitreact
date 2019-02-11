@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./styles.scss";
 import LoginForm from "components/LoginForm";
+import SignupForm from "components/SignupForm";
 
 const Auth = (props, context) => {
    const renderAuthSection = () => {
@@ -36,9 +37,11 @@ const Auth = (props, context) => {
          </div>
          <div className={styles.column}>
             <div className={`${styles.whiteBox} ${styles.formBox}`}>
-               {/* {props.action === "signup" && <SignUpForm />} */}
+               {props.action === "signup" && (
+                  <SignupForm onSubmit={props.onSubmitSignup} />
+               )}
                {props.action === "login" && (
-                  <LoginForm onSubmit={props.onSubmit} />
+                  <LoginForm onSubmit={props.onSubmitLogin} />
                )}
             </div>
             <div className={styles.whiteBox}>{renderAuthSection()}</div>

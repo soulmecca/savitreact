@@ -37,7 +37,7 @@
 
    // border: 1px solid red;
    &:last-child {
-      // width: 38%;
+      width: 38%;
       margin-left: 35px;
       // background-color: blue;
       @include breakpoint("phone") {

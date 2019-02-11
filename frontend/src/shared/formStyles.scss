@@ -1,6 +1,43 @@
 .form-component {
+   maring-top: 5px;
+   display: flex;
+   flex-direction: column;
+   margin-bottom: 25px;
    .form {
+      display: flex;
+      flex-direction: column;
+      .button {
+         margin-top: 10px;
+      }
       .text-input {
+         border: 1px solid #efefef;
+         border-radius: 3px;
+         background-color: $bg-color;
+         margin-bottom: 7px;
+         font-size: $normal-font-size;
+         padding: 9px 0 7px 8px;
+         // font-weight: 400;
+         &:focus {
+            outline: none;
+            border: 1px solid #b2b2b2;
+         }
+      }
+   }
+   .signup-header {
+      font-size: 17px;
+      color: $dark-grey;
+      font-weight: 600;
+      margin-bottom: 20px;
+   }
+
+   .terms {
+      width: 80%;
+      margin: 0 auto;
+      line-height: 20px;
+      color: $dark-grey;
+      span {
+         font-weight: 600;
+         cursor: pointer;
       }
    }
 }

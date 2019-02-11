@@ -1,10 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
-import LogoFacebook from "react-ionicons/lib/LogoFacebook";
 import formStyles from "shared/formStyles.scss";
 
-class LoginForm extends React.Component {
+class SignupForm extends React.Component {
    renderError = ({ error, touched }) => {
       if (touched && error) {
          return (
@@ -15,13 +13,13 @@ class LoginForm extends React.Component {
       }
    };
 
-   renderInput = ({ input, label, meta }) => {
+   renderInput = ({ input, label, type, meta }) => {
       return (
          <>
             <input
                {...input}
                placeholder={label}
-               type={label === "password" ? "password" : ""}
+               type={type}
                autoComplete="off"
                className={formStyles.textInput}
             />
@@ -37,54 +35,51 @@ class LoginForm extends React.Component {
    render() {
       return (
          <div className={formStyles.formComponent}>
+            <h3 className={formStyles.signupHeader}>
+               "Sign up to see photos and videos from your friends."
+            </h3>
+
+            <span className={formStyles.divider}> or </span>
             <form
                className={formStyles.form}
                onSubmit={this.props.handleSubmit(this.onSubmit)}
                method="post"
             >
                <Field
-                  name="username"
+                  name="email"
+                  label="email"
+                  type="email"
                   component={this.renderInput}
-                  label="Username"
+               />
+               <Field
+                  name="name"
+                  label="name"
+                  type="text"
+                  component={this.renderInput}
+               />
+               <Field
+                  name="username"
+                  label="username"
+                  type="username"
+                  component={this.renderInput}
                />
                <Field
                   name="password"
-                  component={this.renderInput}
                   label="password"
+                  type="password"
+                  component={this.renderInput}
                />
-               <button className={formStyles.button}>Log in</button>
+               <button className={formStyles.button}>Sign up</button>
+               <p className={formStyles.terms}>
+                  By signing up, you agree to our
+                  <span>Terms & Privacy Policy</span>
+               </p>
             </form>
-            <span className={formStyles.divider}>or</span>
-            <span>
-               <LogoFacebook fontSize="20px" color="#385185" />
-               Log in with Facebook
-            </span>
-            <span className={formStyles.forgotLink}>Forget password?</span>
          </div>
       );
    }
 }
 
-// LoginForm.propTypes = {
-//    handleInputChange: PropTypes.func.isRequired,
-//    usernameValue: PropTypes.string.isRequired,
-//    passwordValue: PropTypes.string.isRequared,
-//    handleSubmit: PropTypes.func.isRequired
-// };
-
-export const validate = formValues => {
-   const errors = {};
-   if (!formValues.username) {
-      errors.username = "You must enter a username";
-   }
-   if (!formValues.password) {
-      errors.password = "You must enter a password";
-   }
-
-   return errors;
-};
-
 export default reduxForm({
-   form: "loginForm",
-   validate
-})(LoginForm);
+   form: "signupForm"
+})(SignupForm);
