@@ -26,12 +26,12 @@
    }
    @include breakpoint("desktop") {
       .phone {
-         width: 40vh;
+         width: 50vh;
       }
    }
    @include breakpoint("desktop-xl") {
       .phone {
-         width: 40vh;
+         width: 30vh;
       }
    }
 

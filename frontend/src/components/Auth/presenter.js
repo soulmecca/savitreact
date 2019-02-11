@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.scss";
+import LoginForm from "components/LoginForm";
 
 const Auth = (props, context) => {
    const renderAuthSection = () => {
@@ -34,6 +35,12 @@ const Auth = (props, context) => {
             />
          </div>
          <div className={styles.column}>
+            <div className={`${styles.whiteBox} ${styles.formBox}`}>
+               {/* {props.action === "signup" && <SignUpForm />} */}
+               {props.action === "login" && (
+                  <LoginForm onSubmit={props.onSubmit} />
+               )}
+            </div>
             <div className={styles.whiteBox}>{renderAuthSection()}</div>
             <div className={styles.appBox}>
                <span>Get the app</span>

@@ -15,23 +15,23 @@ const middlewares = [reduxThunk, routerMiddleware(history)];
 const env = process.env.NODE_ENV;
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-if (env === "development") {
-	const { logger } = require("redux-logger");
-	middlewares.push(logger);
-}
+// if (env === "development") {
+// 	const { logger } = require("redux-logger");
+// 	middlewares.push(logger);
+// }
 
 const store = createStore(
-	reducers,
-	composeEnhancers(applyMiddleware(...middlewares))
+   reducers,
+   composeEnhancers(applyMiddleware(...middlewares))
 );
 
 ReactDOM.render(
-	<Provider store={store}>
-		<ConnectedRouter history={history}>
-			<I18n translations={translations} initialLang="en" fallbackLang="en">
-				<App />
-			</I18n>
-		</ConnectedRouter>
-	</Provider>,
-	document.getElementById("root")
+   <Provider store={store}>
+      <ConnectedRouter history={history}>
+         <I18n translations={translations} initialLang="en" fallbackLang="en">
+            <App />
+         </I18n>
+      </ConnectedRouter>
+   </Provider>,
+   document.getElementById("root")
 );

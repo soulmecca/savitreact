@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Auth from "./presenter";
+import { usernameLogin } from "../../redux/actions/auth";
 
 class AuthContainer extends Component {
    state = {
@@ -8,8 +10,14 @@ class AuthContainer extends Component {
 
    render() {
       const { action } = this.state;
-      // console.log("@@@@ ", action);
-      return <Auth action={action} changeAction={this.changeAction} />;
+
+      return (
+         <Auth
+            action={action}
+            changeAction={this.changeAction}
+            onSubmit={this.onSubmit}
+         />
+      );
    }
 
    changeAction = () => {
@@ -22,6 +30,13 @@ class AuthContainer extends Component {
          }
       });
    };
+
+   onSubmit = ({ username, password }) => {
+      usernameLogin(username, password);
+   };
 }
 
-export default AuthContainer;
+export default connect(
+   null,
+   { usernameLogin }
+)(AuthContainer);
