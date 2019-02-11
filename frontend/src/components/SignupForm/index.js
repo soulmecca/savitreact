@@ -1,5 +1,6 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import LogoFacebook from "react-ionicons/lib/LogoFacebook";
 import formStyles from "shared/formStyles.scss";
 
 class SignupForm extends React.Component {
@@ -38,6 +39,10 @@ class SignupForm extends React.Component {
             <h3 className={formStyles.signupHeader}>
                "Sign up to see photos and videos from your friends."
             </h3>
+            <button className={formStyles.button}>
+               <LogoFacebook fontSize="20px" color="white" />
+               Log in with Facebook
+            </button>
 
             <span className={formStyles.divider}> or </span>
             <form
