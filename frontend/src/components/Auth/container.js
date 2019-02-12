@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Auth from "./presenter";
 import { usernameLogin, createAccount } from "../../redux/actions/auth";
+import { facebookLogin } from "../../redux/actions/auth";
 
 class AuthContainer extends Component {
    state = {
@@ -42,11 +43,13 @@ class AuthContainer extends Component {
    };
 
    handleFacebookLogin = response => {
-      console.log(response);
+      // console.log("23424234", response);
+      const { accessToken } = response;
+      this.props.facebookLogin(accessToken);
    };
 }
 
 export default connect(
    null,
-   { usernameLogin, createAccount }
+   { usernameLogin, createAccount, facebookLogin }
 )(AuthContainer);

@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
-import LogoFacebook from "react-ionicons/lib/LogoFacebook";
 import FacebookLogin from "react-facebook-login";
 import formStyles from "shared/formStyles.scss";
 
@@ -64,7 +63,7 @@ class LoginForm extends React.Component {
             <span className={formStyles.divider}>{this.context.t("or")}</span>
             <FacebookLogin
                appId="2375402692691732"
-               autoLoad={true}
+               autoLoad={false}
                fields="name,email,picture"
                callback={this.props.handleFacebookLogin}
                cssClass={formStyles.facebookLink}

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import PropTypes from "prop-types";
-import LogoFacebook from "react-ionicons/lib/LogoFacebook";
+import FacebookLogin from "react-facebook-login";
 import formStyles from "shared/formStyles.scss";
 
-class SignupForm extends React.Component {
+class SignupForm extends Component {
    static contextTypes = {
       t: PropTypes.func.isRequired
    };
@@ -46,10 +46,15 @@ class SignupForm extends React.Component {
                   "Sign up to see photos and videos from your friends."
                )}
             </h3>
-            <button className={formStyles.button}>
-               <LogoFacebook fontSize="20px" color="white" />
-               {this.context.t("Log in with Facebook")}
-            </button>
+            <FacebookLogin
+               appId="2375402692691732"
+               autoLoad={true}
+               fields="name,email,picture"
+               callback={this.props.handleFacebookLogin}
+               cssClass={formStyles.facebookLink}
+               icon="fa-facebook-official"
+               textButton={this.context.t("Log in with Facebook")}
+            />
 
             <span className={formStyles.divider}> or </span>
             <form

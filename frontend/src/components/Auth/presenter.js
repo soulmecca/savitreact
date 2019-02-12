@@ -40,7 +40,10 @@ const Auth = (props, context) => {
             <div className={`${styles.whiteBox} ${styles.formBox}`}>
                <img src={require("images/logo.png")} alt="Logo" />
                {props.action === "signup" && (
-                  <SignupForm onSubmit={props.onSubmitSignup} />
+                  <SignupForm
+                     onSubmit={props.onSubmitSignup}
+                     handleFacebookLogin={props.handleFacebookLogin}
+                  />
                )}
                {props.action === "login" && (
                   <LoginForm

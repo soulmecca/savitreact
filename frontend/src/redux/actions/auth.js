@@ -6,15 +6,32 @@ import {
    FOLLOW_USER,
    UNFOLLOW_USER
 } from "./types";
+import axios from "axios";
 
-import loginApi from "../../apis/login";
+import { idLogin, socialLogin } from "../../apis/login";
+import { access } from "fs";
 
 // API actions
+
+export const facebookLogin = access_token => async dispatch => {
+   console.log("next !!!!");
+   const response = await socialLogin.post("/facebook/", {
+      access_token: access_token
+   });
+
+   const token = response.data.token;
+   if (token) {
+      dispatch({
+         type: SAVE_TOKEN,
+         payload: token
+      });
+   }
+};
 
 export const usernameLogin = (username, password) => {
    console.log("@@@@ ", username, password);
    return async dispatch => {
-      const response = await loginApi.post("/login", { username, password });
+      const response = await idLogin.post("/login/", { username, password });
       console.log("@@@@@ response is ", response);
       // if (response.token) {
       //    dispatch({
@@ -27,7 +44,7 @@ export const usernameLogin = (username, password) => {
 
 export const createAccount = (username, password, email, name) => {
    return async dispatch => {
-      const response = await loginApi.post("/registration", {
+      const response = await idLogin.post("/registration/", {
          username,
          password1: password,
          password2: password,
