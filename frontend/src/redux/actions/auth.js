@@ -14,7 +14,6 @@ import { access } from "fs";
 // API actions
 
 export const facebookLogin = access_token => async dispatch => {
-   console.log("next !!!!");
    const response = await socialLogin.post("/facebook/", {
       access_token: access_token
    });
