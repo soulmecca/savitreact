@@ -29,6 +29,8 @@ class User(AbstractUser):
     followers = ManyToManyField("self", blank=True)
     followings = ManyToManyField("self", blank=True)
 
+    def __str__(self):
+        return self.username
 
     @property
     def post_count(self):
@@ -40,5 +42,4 @@ class User(AbstractUser):
 
     @property
     def followings_count(self):
-        return self.followings.all().count()        
-    
+        return self.followings.all().count()

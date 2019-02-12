@@ -7,7 +7,7 @@ import {
    UNFOLLOW_USER
 } from "./types";
 
-import { idLogin, socialLogin } from "../../apis/login";
+import { auth, socialLogin } from "../../apis/login";
 
 // API actions
 
@@ -27,7 +27,7 @@ export const facebookLogin = access_token => async dispatch => {
 
 export const usernameLogin = (username, password) => async dispatch => {
    try {
-      const response = await idLogin.post("/login/", { username, password });
+      const response = await auth.post("/login/", { username, password });
       const token = response.data.token;
 
       if (token) {
@@ -41,16 +41,25 @@ export const usernameLogin = (username, password) => async dispatch => {
    }
 };
 
-export const createAccount = (username, password, email, name) => {
-   return async dispatch => {
-      const response = await idLogin.post("/registration/", {
-         username,
-         password1: password,
-         password2: password,
-         email,
-         name
-      });
+export const createAccount = (
+   username,
+   password,
+   email,
+   name
+) => async dispatch => {
+   const response = await auth.post("/registration/", {
+      username,
+      password1: password,
+      password2: password,
+      email,
+      name
+   });
 
-      console.log("############## repsonse is ", response);
-   };
+   const token = response.data.token;
+   if (token) {
+      dispatch({
+         type: SAVE_TOKEN,
+         payload: token
+      });
+   }
 };

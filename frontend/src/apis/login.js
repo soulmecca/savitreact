@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const idLogin = axios.create({
+export const auth = axios.create({
    baseURL: "/rest-auth",
    headers: {
       "Content-type": "application/json"

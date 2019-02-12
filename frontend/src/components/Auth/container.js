@@ -43,7 +43,6 @@ class AuthContainer extends Component {
    };
 
    handleFacebookLogin = response => {
-      console.log("23424234", response);
       const { accessToken } = response;
       this.props.facebookLogin(accessToken);
    };
