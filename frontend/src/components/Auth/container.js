@@ -35,11 +35,11 @@ class AuthContainer extends Component {
    };
 
    onSubmitLogin = ({ username, password }) => {
-      usernameLogin(username, password);
+      this.props.usernameLogin(username, password);
    };
 
    onSubmitSignup = ({ username, password, email, name }) => {
-      createAccount(username, password, email, name);
+      this.props.createAccount(username, password, email, name);
    };
 
    handleFacebookLogin = response => {
