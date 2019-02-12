@@ -1,9 +1,14 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
+import PropTypes from "prop-types";
 import LogoFacebook from "react-ionicons/lib/LogoFacebook";
 import formStyles from "shared/formStyles.scss";
 
 class SignupForm extends React.Component {
+   static contextTypes = {
+      t: PropTypes.func.isRequired
+   };
+
    renderError = ({ error, touched }) => {
       if (touched && error) {
          return (
@@ -19,7 +24,7 @@ class SignupForm extends React.Component {
          <>
             <input
                {...input}
-               placeholder={label}
+               placeholder={this.context.t(label)}
                type={type}
                autoComplete="off"
                className={formStyles.textInput}
@@ -37,11 +42,13 @@ class SignupForm extends React.Component {
       return (
          <div className={formStyles.formComponent}>
             <h3 className={formStyles.signupHeader}>
-               "Sign up to see photos and videos from your friends."
+               {this.context.t(
+                  "Sign up to see photos and videos from your friends."
+               )}
             </h3>
             <button className={formStyles.button}>
                <LogoFacebook fontSize="20px" color="white" />
-               Log in with Facebook
+               {this.context.t("Log in with Facebook")}
             </button>
 
             <span className={formStyles.divider}> or </span>
@@ -76,8 +83,8 @@ class SignupForm extends React.Component {
                />
                <button className={formStyles.button}>Sign up</button>
                <p className={formStyles.terms}>
-                  By signing up, you agree to our
-                  <span>Terms & Privacy Policy</span>
+                  {this.context.t("By signing up, you agree to our")}
+                  <span>{this.context.t("Terms & Privacy Policy")}</span>
                </p>
             </form>
          </div>

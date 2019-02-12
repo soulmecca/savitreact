@@ -5,6 +5,10 @@ import LogoFacebook from "react-ionicons/lib/LogoFacebook";
 import formStyles from "shared/formStyles.scss";
 
 class LoginForm extends React.Component {
+   static contextTypes = {
+      t: PropTypes.func.isRequired
+   };
+
    renderError = ({ error, touched }) => {
       if (touched && error) {
          return (
@@ -20,7 +24,7 @@ class LoginForm extends React.Component {
          <>
             <input
                {...input}
-               placeholder={label}
+               placeholder={this.context.t(label)}
                type={label === "password" ? "password" : ""}
                autoComplete="off"
                className={formStyles.textInput}
@@ -52,14 +56,18 @@ class LoginForm extends React.Component {
                   component={this.renderInput}
                   label="password"
                />
-               <button className={formStyles.button}>Log in</button>
+               <button className={formStyles.button}>
+                  {this.context.t("Log in")}
+               </button>
             </form>
-            <span className={formStyles.divider}>or</span>
+            <span className={formStyles.divider}>{this.context.t("or")}</span>
             <span>
                <LogoFacebook fontSize="20px" color="#385185" />
-               Log in with Facebook
+               {this.context.t("Log in with Facebook")}
             </span>
-            <span className={formStyles.forgotLink}>Forget password?</span>
+            <span className={formStyles.forgotLink}>
+               {this.context.t("Forget password?")}
+            </span>
          </div>
       );
    }

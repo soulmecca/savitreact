@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./styles.scss";
+import PropTypes from "prop-types";
 import LoginForm from "components/LoginForm";
 import SignupForm from "components/SignupForm";
 
@@ -7,19 +8,19 @@ const Auth = (props, context) => {
    const renderAuthSection = () => {
       if (props.action === "login") {
          return (
-            <p>
-               Don't have an account?{" "}
+            <p className={styles.text}>
+               {context.t("Don't have an account?")}
                <span onClick={props.changeAction} className={styles.changeLink}>
-                  Sign up
+                  {context.t("Sign up")}
                </span>
             </p>
          );
       } else if (props.action === "signup") {
          return (
-            <p>
-               Have an account?{" "}
+            <p className={styles.text}>
+               {context.t("Have an account?")}
                <span onClick={props.changeAction} className={styles.changeLink}>
-                  Log in
+                  {context.t("Log in")}
                </span>
             </p>
          );
@@ -62,6 +63,10 @@ const Auth = (props, context) => {
          </div>
       </main>
    );
+};
+
+Auth.contextTypes = {
+   t: PropTypes.func.isRequired
 };
 
 export default Auth;
