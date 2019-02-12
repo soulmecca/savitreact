@@ -5,7 +5,7 @@ import { usernameLogin, createAccount } from "../../redux/actions/auth";
 
 class AuthContainer extends Component {
    state = {
-      action: "signup"
+      action: "login"
    };
 
    render() {
@@ -17,6 +17,7 @@ class AuthContainer extends Component {
             changeAction={this.changeAction}
             onSubmitLogin={this.onSubmitLogin}
             onSubmitSignup={this.onSubmitSignup}
+            handleFacebookLogin={this.handleFacebookLogin}
          />
       );
    }
@@ -35,8 +36,13 @@ class AuthContainer extends Component {
    onSubmitLogin = ({ username, password }) => {
       usernameLogin(username, password);
    };
+
    onSubmitSignup = ({ username, password, email, name }) => {
       createAccount(username, password, email, name);
+   };
+
+   handleFacebookLogin = response => {
+      console.log(response);
    };
 }
 

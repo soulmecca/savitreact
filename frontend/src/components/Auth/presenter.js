@@ -43,7 +43,10 @@ const Auth = (props, context) => {
                   <SignupForm onSubmit={props.onSubmitSignup} />
                )}
                {props.action === "login" && (
-                  <LoginForm onSubmit={props.onSubmitLogin} />
+                  <LoginForm
+                     onSubmit={props.onSubmitLogin}
+                     handleFacebookLogin={props.handleFacebookLogin}
+                  />
                )}
             </div>
             <div className={styles.whiteBox}>{renderAuthSection()}</div>

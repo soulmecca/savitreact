@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Field, reduxForm } from "redux-form";
 import LogoFacebook from "react-ionicons/lib/LogoFacebook";
+import FacebookLogin from "react-facebook-login";
 import formStyles from "shared/formStyles.scss";
 
 class LoginForm extends React.Component {
@@ -61,10 +62,15 @@ class LoginForm extends React.Component {
                </button>
             </form>
             <span className={formStyles.divider}>{this.context.t("or")}</span>
-            <span>
-               <LogoFacebook fontSize="20px" color="#385185" />
-               {this.context.t("Log in with Facebook")}
-            </span>
+            <FacebookLogin
+               appId="2375402692691732"
+               autoLoad={true}
+               fields="name,email,picture"
+               callback={this.props.handleFacebookLogin}
+               cssClass={formStyles.facebookLink}
+               icon="fa-facebook-official"
+               textButton={this.context.t("Log in with Facebook")}
+            />
             <span className={formStyles.forgotLink}>
                {this.context.t("Forget password?")}
             </span>
