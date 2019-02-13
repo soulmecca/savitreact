@@ -1,11 +1,11 @@
-from rest_framework import serializers 
+from rest_framework import serializers
 from . import models
 from savitreact.users import models as user_models
 from taggit_serializer.serializers import (TagListSerializerField, TaggitSerializer)
 
 
 class FeedUserSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         model = user_models.User
         fields = (
@@ -33,29 +33,29 @@ class LikeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ImageSerializer(TaggitSerializer ,serializers.ModelSerializer):
-    
+class ImageSerializer(TaggitSerializer, serializers.ModelSerializer):
+
     comments = CommentSerializer(many=True)
     creator = FeedUserSerializer()
     tags = TagListSerializerField()
 
     class Meta:
-            model = models.Image
-            fields = (
-                'id',
-                'file',
-                'location',
-                'caption',
-                'comments',
-                'like_count',
-                'creator',
-                'tags',
-                'created_at'
-            )
+        model = models.Image
+        fields = (
+            'id',
+            'file',
+            'location',
+            'caption',
+            'comments',
+            'like_count',
+            'creator',
+            'tags',
+            'natural_time'
+        )
 
 
 class UserProfileImageSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         model = models.Image
         fields = (

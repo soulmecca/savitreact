@@ -2,6 +2,7 @@ from django.db import models
 from savitreact.users import models as user_models
 from django.utils.encoding import python_2_unicode_compatible
 from taggit.managers import TaggableManager
+from django.contrib.humanize.templatetags.humanize import naturaltime
 
 
 # Create your models here.
@@ -31,11 +32,16 @@ class Image(TimeStampedModel):
     def comment_count(self):
         return self.comments.all().count()
 
+    @property
+    def natural_time(self):
+        return naturaltime(self.created_at)
+
     def __str__(self):
         return '{} - {}'.format(self.location, self.caption)
-    
+
     class Meta:
         ordering = ['-created_at']
+
 
 @python_2_unicode_compatible
 class Comment(TimeStampedModel):
@@ -46,6 +52,7 @@ class Comment(TimeStampedModel):
 
     def __str__(self):
         return self.message
+
 
 @python_2_unicode_compatible
 class Like(TimeStampedModel):
