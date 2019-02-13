@@ -28,7 +28,7 @@ class Images(APIView):
             image_list.append(image)
 
         sorted_list = sorted(image_list, key=lambda image: image.created_at, reverse=True)
-        serializer = serializers.ImageSerializer(sorted_list, many=True)
+        serializer = serializers.ImageSerializer(sorted_list, many=True, context={'request': request})
         return Response(data=serializer.data)
 
     def post(self, request, format=None):
@@ -220,7 +220,8 @@ class ImageDetail(APIView):
         if image is None:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-        serializer = serializers.CreateAndEditImageSerializer(image, data=request.data, partial=True)
+        serializer = serializers.CreateAndEditImageSerializer(
+            image, data=request.data, partial=True, context={'request': request})
 
         if serializer.is_valid():
             serializer.save(creator=user)
