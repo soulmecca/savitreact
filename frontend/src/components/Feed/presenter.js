@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.scss";
 import Loading from "components/Loading";
+import FeedPhoto from "../FeedPhoto";
 
 const Feed = props => {
    if (props.loading) {
@@ -18,7 +19,12 @@ const LoadingFeed = props => (
 );
 
 const RenderPosts = props => (
-   <div className={styles.feed}> {props.posts.map(post => post.caption)}</div>
+   <div className={styles.feed}>
+      {" "}
+      {props.posts.map(post => (
+         <FeedPhoto {...post} key={post.id} />
+      ))}
+   </div>
 );
 
 Feed.propTypes = {

@@ -29,11 +29,14 @@ urlpatterns = [
         include("savitreact.notifications.urls", namespace="notifications")
     ),
     path("accounts/", include("allauth.urls")),
-    re_path(r'^', views.ReactAppView.as_view()),
     # Your stuff: custom urls includes go here
 ] + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 )
+
+urlpatterns += [
+    re_path(r'^', views.ReactAppView.as_view()),
+]
 
 if settings.DEBUG:
     # This allows the error pages to be debugged during development, just visit
