@@ -2,26 +2,37 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.scss";
 import PhotoActions from "components/PhotoActions";
+import PhotoComments from "components/PhotoComments";
 
 const FeedPhoto = (props, context) => {
    console.log(props);
    return (
       <div className={styles.feedPhoto}>
-         <header>
+         <header className={styles.header}>
             <img
                src={
                   props.creator.profile_image || require("images/profile.jpg")
                }
                alt={props.creator.username}
+               className={props.creator.name}
             />
-            <div>
-               <span>{props.creator.username}</span>
-               <span>{props.location}</span>
+            <div className={styles.headerColumn}>
+               <span className={styles.creator}>{props.creator.username}</span>
+               <span className={styles.location}>{props.location}</span>
             </div>
          </header>
-         <img src={props.file} alt={props.caption} />
-         <div>
+         <img
+            className={styles.mainImage}
+            src={props.file}
+            alt={props.caption}
+         />
+         <div className={styles.meta}>
             <PhotoActions likes={props.like_count} />
+            <PhotoComments
+               caption={props.caption}
+               creator={props.creator}
+               comments={props.comments}
+            />
          </div>
       </div>
    );
