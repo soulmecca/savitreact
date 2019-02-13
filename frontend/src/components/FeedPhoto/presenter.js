@@ -63,7 +63,8 @@ FeedPhoto.propTypes = {
          }).isRequired
       })
    ).isRequired,
-   natural_time: PropTypes.string.isRequired
+   natural_time: PropTypes.string.isRequired,
+   is_liked: PropTypes.bool.isRequired
 };
 
 export default FeedPhoto;
