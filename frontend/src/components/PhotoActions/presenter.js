@@ -6,16 +6,19 @@ import IosTextOutline from "react-ionicons/lib/IosTextOutline";
 import styles from "./styles.scss";
 
 const PhotoActions = (props, context) => (
-   <div>
-      <div>
-         <span>
+   <div className={styles.actions}>
+      <div className={styles.icons}>
+         <span className={styles.icon}>
             <IosHeartOutline fontSize="28px" color="black" />
          </span>
-         <span>
+         <span className={styles.icon}>
             <IosTextOutline fontSize="28px" color="black" />
          </span>
       </div>
-      <span>{props.likes === 1 ? context.t("like") : context.t("likes")}</span>
+      <span className={styles.likes}>
+         {props.likes}
+         {props.likes === 1 ? context.t("like") : context.t("likes")}
+      </span>
    </div>
 );
 
