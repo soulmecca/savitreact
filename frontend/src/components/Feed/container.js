@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getFeed } from "../../redux/actions/photos";
+import { logout } from "../../redux/actions/auth";
 import Feed from "./presenter";
 
 class FeedContainer extends Component {
@@ -8,10 +9,11 @@ class FeedContainer extends Component {
       loading: true
    };
 
-   componentWillMount() {
+   async componentWillMount() {
       const { token } = this.props;
       // console.log(token);
-      this.props.getFeed(token);
+      const response = await this.props.getFeed(token);
+
       // if (this.props) {
 
       //    console.log(this.props.token);
@@ -31,5 +33,5 @@ const mapStateToProps = state => {
 
 export default connect(
    mapStateToProps,
-   { getFeed }
+   { getFeed, logout }
 )(FeedContainer);

@@ -63,3 +63,10 @@ export const createAccount = (
       });
    }
 };
+
+export const logout = () => dispatch => {
+   console.log("inside logout");
+   dispatch({
+      type: LOGOUT
+   });
+};
