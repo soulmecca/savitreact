@@ -5,3 +5,5 @@ export const FOLLOW_USER = "FOLLOW_USER";
 export const UNFOLLOW_USER = "UNFOLLOW_USER";
 export const SET_IMAGE_LIST = "SET_IMAGE_LIST";
 export const GET_IMAGES = "GET_IMAGES";
+export const LIKE_PHOTO = "LIKE_PHOTO";
+export const UNLIKE_PHOTO = "UNLIKE_PHOTO";

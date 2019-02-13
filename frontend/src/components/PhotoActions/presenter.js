@@ -9,7 +9,11 @@ const PhotoActions = (props, context) => (
    <div className={styles.actions}>
       <div className={styles.icons}>
          <span className={styles.icon}>
-            <IosHeartOutline fontSize="28px" color="black" />
+            <IosHeartOutline
+               fontSize="28px"
+               color="black"
+               onClick={props.onHeartClick}
+            />
          </span>
          <span className={styles.icon}>
             <IosTextOutline fontSize="28px" color="black" />
