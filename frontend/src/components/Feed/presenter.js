@@ -6,6 +6,8 @@ import Loading from "components/Loading";
 const Feed = props => {
    if (props.loading) {
       return <LoadingFeed />;
+   } else if (props.posts) {
+      return <RenderPosts {...props} />;
    }
 };
 
@@ -13,6 +15,10 @@ const LoadingFeed = props => (
    <div className={styles.feed}>
       <Loading />
    </div>
+);
+
+const RenderPosts = props => (
+   <div className={styles.feed}> {props.posts.map(post => post.caption)}</div>
 );
 
 Feed.propTypes = {

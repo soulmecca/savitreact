@@ -5,8 +5,8 @@ const INITIAL_STATE = {};
 export default (state = INITIAL_STATE, action) => {
    switch (action.type) {
       case GET_IMAGES:
-         // return applySetToken(state, action);
-         return state;
+         const posts = action.payload;
+         return { ...state, posts };
       default:
          return state;
    }

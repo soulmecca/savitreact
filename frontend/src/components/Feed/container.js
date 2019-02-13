@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getFeed } from "../../redux/actions/photos";
-import { logout } from "../../redux/actions/auth";
+
 import Feed from "./presenter";
 
 class FeedContainer extends Component {
@@ -9,29 +7,28 @@ class FeedContainer extends Component {
       loading: true
    };
 
-   async componentWillMount() {
+   componentDidMount() {
       const { token } = this.props;
-      // console.log(token);
-      const response = await this.props.getFeed(token);
 
-      // if (this.props) {
-
-      //    console.log(this.props.token);
-      //    // this.props.getFeed(this.props.token);
-      // }
+      if (!this.props.posts) {
+         this.props.getFeed(token);
+      } else {
+         this.setState({
+            loading: false
+         });
+      }
    }
 
+   componentWillReceiveProps = nextProps => {
+      if (nextProps.posts) {
+         this.setState({ loading: false });
+      }
+   };
+
    render() {
-      return <Feed {...this.state} />;
+      const { posts } = this.props;
+      return <Feed {...this.state} posts={posts} />;
    }
 }
 
-const mapStateToProps = state => {
-   const token = state.auth.token;
-   return { token };
-};
-
-export default connect(
-   mapStateToProps,
-   { getFeed, logout }
-)(FeedContainer);
+export default FeedContainer;

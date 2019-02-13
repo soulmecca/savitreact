@@ -5,7 +5,6 @@ import { logout } from "./auth";
 export const getFeed = token => async dispatch => {
    try {
       const response = await image(token).get();
-      console.log("resonse is ", response);
       if (response.data) {
          dispatch({
             type: GET_IMAGES,
