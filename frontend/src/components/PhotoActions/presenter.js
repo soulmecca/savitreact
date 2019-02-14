@@ -34,7 +34,7 @@ const PhotoActions = (props, context) => (
             <IosTextOutline fontSize="28px" color="black" />
          </span>
       </div>
-      <span className={styles.likes}>
+      <span className={styles.likes} onClick={props.openLikes}>
          {props.likes}{" "}
          {props.likes === 1 ? context.t("like") : context.t("likes")}
       </span>
@@ -51,7 +51,8 @@ PhotoActions.propTypes = {
    id: PropTypes.number.isRequired,
    likePhoto: PropTypes.func.isRequired,
    unlikePhoto: PropTypes.func.isRequired,
-   onHeartClick: PropTypes.func.isRequired
+   onHeartClick: PropTypes.func.isRequired,
+   openLikes: PropTypes.func.isRequired
 };
 
 export default PhotoActions;
