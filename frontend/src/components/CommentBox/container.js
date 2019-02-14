@@ -31,6 +31,7 @@ class CommentBoxContainer extends React.Component {
       if (key === "Enter") {
          event.preventDefault();
          this.props.createComment(this.props.pId, this.state.comment);
+         this.setState({ comment: "" });
       }
    };
 }

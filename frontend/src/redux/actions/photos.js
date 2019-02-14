@@ -1,4 +1,4 @@
-import { GET_IMAGES, LIKE_PHOTO, UNLIKE_PHOTO } from "./types";
+import { GET_IMAGES, LIKE_PHOTO, UNLIKE_PHOTO, CREATE_COMMENT } from "./types";
 import image from "../../apis/image";
 import { logout } from "./auth";
 
@@ -73,8 +73,19 @@ export const createComment = (pId, message) => async (dispatch, getState) => {
       const response = await image(token).post(`/${pId}/comments/`, {
          message: message
       });
-      console.log("res", response);
+
+      dispatch({
+         type: CREATE_COMMENT,
+         payload: {
+            pId: pId,
+            comment: response.data
+         }
+      });
    } catch (err) {
-      console.log("err", err);
+      if (err.response) {
+         if (err.response.statue === 401) {
+            dispatch(logout());
+         }
+      }
    }
 };
