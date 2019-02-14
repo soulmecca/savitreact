@@ -1,11 +1,4 @@
-import {
-   SAVE_TOKEN,
-   LOGOUT,
-   SET_IMAGE_LIST,
-   SET_USER_LIST,
-   FOLLOW_USER,
-   UNFOLLOW_USER
-} from "./types";
+import { SAVE_TOKEN, LOGOUT } from "./types";
 
 import { auth, socialLogin } from "../../apis/login";
 

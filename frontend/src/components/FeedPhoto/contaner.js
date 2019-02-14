@@ -19,6 +19,7 @@ class FeedPhotoContainer extends React.Component {
 
    openLikes = () => {
       this.setState({ seeingLikes: true });
+      this.props.fetchUserList(this.props.id);
    };
 
    closeLikes = () => {
