@@ -63,3 +63,18 @@ export const unlikePhoto = pId => async (dispatch, getState) => {
       }
    }
 };
+
+export const createComment = (pId, message) => async (dispatch, getState) => {
+   const {
+      auth: { token }
+   } = getState();
+
+   try {
+      const response = await image(token).post(`/${pId}/comments/`, {
+         message: message
+      });
+      console.log("res", response);
+   } catch (err) {
+      console.log("err", err);
+   }
+};

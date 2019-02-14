@@ -19,6 +19,7 @@ CommentBox.propTypes = {
    onInputChange: PropTypes.func.isRequired,
    onKeyPress: PropTypes.func.isRequired,
    comment: PropTypes.string.isRequired
+   // id: PropTypes.number.isRequired
 };
 
 CommentBox.contextTypes = {
