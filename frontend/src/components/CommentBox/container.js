@@ -3,9 +3,37 @@ import PropTypes from "prop-types";
 import CommentBox from "./presenter";
 
 class CommentBoxContainer extends React.Component {
+   state = {
+      comment: ""
+   };
    render() {
-      return <CommentBox />;
+      return (
+         <CommentBox
+            {...this.state}
+            onInputChange={this.onInputChange}
+            onKeyPress={this.onKeyPress}
+         />
+      );
    }
+
+   onInputChange = event => {
+      const {
+         target: { value }
+      } = event;
+      this.setState({
+         comment: value
+      });
+   };
+
+   onKeyPress = event => {
+      const { key } = event;
+
+      if (key === "Enter") {
+         event.preventDefault();
+      } else {
+         console.log(key);
+      }
+   };
 }
 
 export default CommentBoxContainer;
