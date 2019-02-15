@@ -1,7 +1,7 @@
 import imageAPI from "../../apis/image";
 import userAPI from "../../apis/user";
 import { logout } from "./auth";
-import { FETCH_USER_LIST, FOLLOWING_USER } from "./types";
+import { FETCH_USER_LIST, FOLLOWING_USER, GET_IMAGES } from "./types";
 
 const setFollowingUser = uid => {
    return {
@@ -66,6 +66,31 @@ export const getExplore = () => async (dispatch, getState) => {
          payload: response.data
       });
    } catch (err) {
+      if (err.response && err.response.status === 401) {
+         dispatch(logout());
+      }
+   }
+};
+
+export const searchByTerm = term => async (dispatch, getState) => {
+   try {
+      const {
+         auth: { token }
+      } = getState();
+      const users = await userAPI(token).get(`/search/?username=${term}`);
+      const images = await imageAPI(token).get(`/search/?hashtags=${term}`);
+
+      dispatch({
+         type: FETCH_USER_LIST,
+         payload: users.data
+      });
+      dispatch({
+         type: GET_IMAGES,
+         payload: images.data
+      });
+      console.log(users, images);
+   } catch (err) {
+      console.error(err);
       if (err.response && err.response.status === 401) {
          dispatch(logout());
       }

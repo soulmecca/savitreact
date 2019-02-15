@@ -20,7 +20,7 @@ class NavigationContainer extends Component {
    onSubmit = term => {
       console.log(term);
       this.props.history.push(`/search/${term.search}`);
-      this.props.reset("navForm");
+      // this.props.reset("navForm");
    };
 }
 
