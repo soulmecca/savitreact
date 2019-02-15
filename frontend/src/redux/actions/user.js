@@ -9,7 +9,6 @@ export const fetchUserList = pId => async (dispatch, getState) => {
       } = getState();
 
       const response = await image(token).get(`/${pId}/likes/`);
-
       dispatch({
          type: FETCH_USER_LIST,
          payload: response.data

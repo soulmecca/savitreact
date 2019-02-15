@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
+import MdClose from "react-ionicons/lib/MdClose";
 import styles from "./styles.scss";
 import Loading from "components/Loading";
-import MdClose from "react-ionicons/lib/MdClose";
+import UserDisplay from "components/UserDisplay";
 
 const UserList = props => (
    <div className={styles.container}>
@@ -14,15 +15,16 @@ const UserList = props => (
             </span>
          </header>
          <div className={styles.content}>
-            {props.loading ? (
-               <span className={styles.loading}>
-                  <Loading />
-               </span>
-            ) : null}
+            {props.loading ? <Loading /> : <RenderUsers users={props.users} />}
          </div>
       </div>
    </div>
 );
+
+const RenderUsers = props =>
+   props.users.map(user => (
+      <UserDisplay horizontal={true} user={user} key={user.id} />
+   ));
 
 UserList.propTypes = {
    title: PropTypes.string.isRequired,

@@ -4,6 +4,18 @@ import UserList from "./presenter";
 class UserListContainer extends React.Component {
    state = { loading: true };
 
+   componentDidMount() {
+      if (this.propsusers && this.state.loading) {
+         this.setState({ loading: false });
+      }
+   }
+
+   componentWillUpdate(nextProps) {
+      if (nextProps.users && this.state.loading) {
+         this.setState({ loading: false });
+      }
+   }
+
    render() {
       return <UserList {...this.props} {...this.state} />;
    }
