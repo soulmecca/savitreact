@@ -21,12 +21,17 @@ export const facebookLogin = access_token => async dispatch => {
 export const usernameLogin = (username, password) => async dispatch => {
    try {
       const response = await auth.post("/login/", { username, password });
-      const token = response.data.token;
+      const {
+         data: { token, user }
+      } = response;
 
       if (token) {
          dispatch({
             type: SAVE_TOKEN,
-            payload: token
+            payload: {
+               token,
+               user
+            }
          });
       }
    } catch (err) {

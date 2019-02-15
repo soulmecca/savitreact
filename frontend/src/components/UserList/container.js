@@ -5,7 +5,7 @@ class UserListContainer extends React.Component {
    state = { loading: true };
 
    componentDidMount() {
-      if (this.propsusers && this.state.loading) {
+      if (this.props.users && this.state.loading) {
          this.setState({ loading: false });
       }
    }

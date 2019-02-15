@@ -15,17 +15,33 @@ const UserDisplay = (props, context) => (
             <span className={styles.name}>{props.user.name}</span>
          </div>
       </div>
-      <div className={styles.column}>
-         <button className={styles.button}>Following</button>
-      </div>
+      <div className={styles.column}>{renderButton(props, context)}</div>
    </div>
 );
 
+const renderButton = (props, context) => {
+   if (parseInt(props.curUid) !== props.user.id) {
+      return (
+         <button className={styles.button} onClick={props.onButtonClick}>
+            {props.user.following
+               ? context.t("Following")
+               : context.t("Follow")}
+         </button>
+      );
+   }
+};
+
 UserDisplay.propTypes = {
    user: PropTypes.shape({
+      id: PropTypes.number.isRequired,
       profile_image: PropTypes.string,
-      username: PropTypes.string.isRequired
+      username: PropTypes.string.isRequired,
+      following: PropTypes.bool.isRequired
    }).isRequired
+};
+
+UserDisplay.contextTypes = {
+   t: PropTypes.func.isRequired
 };
 
 export default UserDisplay;

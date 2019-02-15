@@ -8,14 +8,25 @@ from savitreact.images import serializers as image_serializers
 
 class ListUserSerializer(serializers.ModelSerializer):
 
+    following = serializers.SerializerMethodField()
+
     class Meta:
         model = models.User
         fields = (
             'id',
             'profile_image',
             'username',
-            'name'
+            'name',
+            'following'
         )
+
+    def get_following(self, obj):
+        if "request" in self.context:
+            request = self.context['request']
+            if obj in request.user.followings.all():
+                return True
+
+        return False
 
 
 class UserProfileSerializer(serializers.ModelSerializer):

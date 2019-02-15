@@ -15,7 +15,11 @@ const UserList = props => (
             </span>
          </header>
          <div className={styles.content}>
-            {props.loading ? <Loading /> : <RenderUsers users={props.users} />}
+            {props.loading ? (
+               <Loading />
+            ) : (
+               <RenderUsers users={props.users} uid={props.uid} />
+            )}
          </div>
       </div>
    </div>
@@ -23,7 +27,12 @@ const UserList = props => (
 
 const RenderUsers = props =>
    props.users.map(user => (
-      <UserDisplay horizontal={true} user={user} key={user.id} />
+      <UserDisplay
+         horizontal={true}
+         user={user}
+         key={user.id}
+         curUid={props.uid}
+      />
    ));
 
 UserList.propTypes = {

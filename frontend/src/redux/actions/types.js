@@ -1,7 +1,6 @@
 export const SAVE_TOKEN = "SAVE_TOKEN";
 export const LOGOUT = "LOGOUT";
-// export const FOLLOW_USER = "FOLLOW_USER";
-// export const UNFOLLOW_USER = "UNFOLLOW_USER";
+export const FOLLOWING_USER = "FOLLOWING_USER";
 export const GET_IMAGES = "GET_IMAGES";
 export const LIKE_PHOTO = "LIKE_PHOTO";
 export const UNLIKE_PHOTO = "UNLIKE_PHOTO";

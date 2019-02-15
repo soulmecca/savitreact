@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const image = token =>
+const imageAPI = token =>
    axios.create({
       baseURL: "/images/",
       headers: {
@@ -8,4 +8,4 @@ const image = token =>
       }
    });
 
-export default image;
+export default imageAPI;

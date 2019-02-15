@@ -1,10 +1,10 @@
 import { GET_IMAGES, LIKE_PHOTO, UNLIKE_PHOTO, CREATE_COMMENT } from "./types";
-import image from "../../apis/image";
+import imageAPI from "../../apis/image";
 import { logout } from "./auth";
 
 export const getFeed = token => async dispatch => {
    try {
-      const response = await image(token).get();
+      const response = await imageAPI(token).get();
       if (response.data) {
          dispatch({
             type: GET_IMAGES,
@@ -18,13 +18,13 @@ export const getFeed = token => async dispatch => {
    }
 };
 
-export const likePhoto = pId => async (dispatch, getState) => {
+export const likePhoto = pId => (dispatch, getState) => {
    try {
       const {
          auth: { token }
       } = getState();
 
-      await image(token).post(`/${pId}/likes/`);
+      imageAPI(token).post(`/${pId}/likes/`);
 
       dispatch({
          type: LIKE_PHOTO,
@@ -41,13 +41,13 @@ export const likePhoto = pId => async (dispatch, getState) => {
    }
 };
 
-export const unlikePhoto = pId => async (dispatch, getState) => {
+export const unlikePhoto = pId => (dispatch, getState) => {
    try {
       const {
          auth: { token }
       } = getState();
 
-      await image(token).delete(`/${pId}/unlikes/`);
+      imageAPI(token).delete(`/${pId}/unlikes/`);
 
       dispatch({
          type: UNLIKE_PHOTO,
@@ -70,7 +70,7 @@ export const createComment = (pId, message) => async (dispatch, getState) => {
    } = getState();
 
    try {
-      const response = await image(token).post(`/${pId}/comments/`, {
+      const response = await imageAPI(token).post(`/${pId}/comments/`, {
          message: message
       });
 

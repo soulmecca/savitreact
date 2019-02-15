@@ -13,7 +13,7 @@ class ReactAppView(View):
         except:
             return HttpResponse(
                 """
-                inddx.html not found! build your React app !!
+                index.html not found! build your React app !!
                 """,
                 status=501,
             )
