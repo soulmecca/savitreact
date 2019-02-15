@@ -18,18 +18,18 @@ export const getFeed = token => async dispatch => {
    }
 };
 
-export const likePhoto = pId => (dispatch, getState) => {
+export const likePhoto = pId => async (dispatch, getState) => {
    try {
       const {
          auth: { token }
       } = getState();
 
-      imageAPI(token).post(`/${pId}/likes/`);
-
       dispatch({
          type: LIKE_PHOTO,
          payload: pId
       });
+
+      await imageAPI(token).post(`/${pId}/likes/`);
    } catch (err) {
       if (err.response) {
          if (err.response.status === 401) {
@@ -41,18 +41,18 @@ export const likePhoto = pId => (dispatch, getState) => {
    }
 };
 
-export const unlikePhoto = pId => (dispatch, getState) => {
+export const unlikePhoto = pId => async (dispatch, getState) => {
    try {
       const {
          auth: { token }
       } = getState();
 
-      imageAPI(token).delete(`/${pId}/unlikes/`);
-
       dispatch({
          type: UNLIKE_PHOTO,
          payload: pId
       });
+
+      await imageAPI(token).delete(`/${pId}/unlikes/`);
    } catch (err) {
       if (err.response) {
          if (err.response.status === 401) {

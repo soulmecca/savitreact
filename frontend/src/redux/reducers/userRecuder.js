@@ -5,8 +5,7 @@ const INITIAL_STATE = {};
 export default (state = INITIAL_STATE, action) => {
    switch (action.type) {
       case FETCH_USER_LIST:
-         const list = action.payload;
-         return { ...state, users: list };
+         return { ...state, users: action.payload };
       case FOLLOWING_USER:
          return applyFollowingUser(state, action);
       default:
@@ -24,6 +23,5 @@ function applyFollowingUser(state, action) {
       }
       return user;
    });
-   console.log({ ...state, users: updatedList });
    return { ...state, users: updatedList };
 }

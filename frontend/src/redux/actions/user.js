@@ -53,3 +53,21 @@ export const followingUser = user => async (dispatch, getState) => {
       }
    }
 };
+
+export const getExplore = () => async (dispatch, getState) => {
+   const {
+      auth: { token }
+   } = getState();
+
+   try {
+      const response = await userAPI(token).get(`/explore/`);
+      dispatch({
+         type: FETCH_USER_LIST,
+         payload: response.data
+      });
+   } catch (err) {
+      if (err.response && err.response.status === 401) {
+         dispatch(logout());
+      }
+   }
+};
