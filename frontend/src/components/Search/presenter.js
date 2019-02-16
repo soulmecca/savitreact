@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./styles.scss";
 import Loading from "components/Loading";
 import UserDisplay from "components/UserDisplay";
-// import PhotoDisplay from "components/PhotoDisplay";
+import PhotoDisplay from "components/PhotoDisplay";
 
 const Search = (props, context) => {
    return (
@@ -47,7 +47,10 @@ const RenderUserSearch = props =>
       <UserDisplay vertical={true} user={user} key={user.id} />
    ));
 
-const RenderImageSearch = props => props.posts.map(post => post.caption);
+const RenderImageSearch = props => {
+   console.log(props.posts);
+   return props.posts.map(post => <PhotoDisplay photo={post} key={post.id} />);
+};
 
 const NotFound = props => <span className={styles.notFound}>{props.text}</span>;
 

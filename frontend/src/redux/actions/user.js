@@ -1,7 +1,7 @@
 import imageAPI from "../../apis/image";
 import userAPI from "../../apis/user";
 import { logout } from "./auth";
-import { FETCH_USER_LIST, FOLLOWING_USER, GET_IMAGES } from "./types";
+import { FETCH_USER_LIST, FOLLOWING_USER, FETCH_IMAGES } from "./types";
 
 const setFollowingUser = uid => {
    return {
@@ -85,10 +85,10 @@ export const searchByTerm = term => async (dispatch, getState) => {
          payload: users.data
       });
       dispatch({
-         type: GET_IMAGES,
+         type: FETCH_IMAGES,
          payload: images.data
       });
-      console.log(users, images);
+      console.log("in actions", users, images);
    } catch (err) {
       console.error(err);
       if (err.response && err.response.status === 401) {

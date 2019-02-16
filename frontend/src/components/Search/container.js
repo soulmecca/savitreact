@@ -22,6 +22,17 @@ class SearchContainer extends Component {
       this.props.searchByTerm(term);
    }
 
+   componentDidUpdate(prevProps, prevState) {
+      const {
+         match: {
+            params: { term }
+         }
+      } = this.props;
+      if (prevProps.match.params.term !== term) {
+         this.props.searchByTerm(term);
+      }
+   }
+
    componentWillReceiveProps(nextProps) {
       if (nextProps.users && nextProps.posts) {
          this.setState({

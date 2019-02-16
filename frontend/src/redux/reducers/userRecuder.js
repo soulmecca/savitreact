@@ -1,7 +1,7 @@
 import {
    FETCH_USER_LIST,
    FOLLOWING_USER,
-   GET_IMAGES
+   FETCH_IMAGES
 } from "../../redux/actions/types";
 
 const INITIAL_STATE = {};
@@ -12,7 +12,7 @@ export default (state = INITIAL_STATE, action) => {
          return { ...state, users: action.payload };
       case FOLLOWING_USER:
          return applyFollowingUser(state, action);
-      case GET_IMAGES:
+      case FETCH_IMAGES:
          const posts = action.payload;
          return { ...state, posts };
       default:
