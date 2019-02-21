@@ -8,6 +8,37 @@ from savitreact.images import serializers as image_serializers
 
 class ListUserSerializer(serializers.ModelSerializer):
 
+    post_count = serializers.ReadOnlyField()
+    followers_count = serializers.ReadOnlyField()
+    followings_count = serializers.ReadOnlyField()
+    following = serializers.SerializerMethodField()
+
+    class Meta:
+        model = models.User
+        fields = (
+            'id',
+            'profile_image',
+            'username',
+            'name',
+            'bio',
+            'website',
+            'post_count',
+            'followers_count',
+            'followings_count',
+            'following',
+        )
+
+    def get_following(self, obj):
+        if "request" in self.context:
+            request = self.context['request']
+            if obj in request.user.followings.all():
+                return True
+
+        return False
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+
     images = image_serializers.ImageSerializer(many=True, read_only=True)
     post_count = serializers.ReadOnlyField()
     followers_count = serializers.ReadOnlyField()
@@ -19,15 +50,16 @@ class ListUserSerializer(serializers.ModelSerializer):
         model = models.User
         fields = (
             'id',
-            'profile_image',
             'username',
             'name',
-            'following',
             'bio',
+            'profile_image',
+            'website',
             'post_count',
             'followers_count',
             'followings_count',
             'images',
+            'following',
             'is_self'
         )
 
@@ -46,28 +78,6 @@ class ListUserSerializer(serializers.ModelSerializer):
                 return True
 
         return False
-
-
-class UserProfileSerializer(serializers.ModelSerializer):
-
-    images = image_serializers.UserProfileImageSerializer(many=True, read_only=True)
-    post_count = serializers.ReadOnlyField()
-    followers_count = serializers.ReadOnlyField()
-    followings_count = serializers.ReadOnlyField()
-
-    class Meta:
-        model = models.User
-        fields = (
-            'username',
-            'name',
-            'bio',
-            'profile_image',
-            'website',
-            'post_count',
-            'followers_count',
-            'followings_count',
-            'images'
-        )
 
 
 class SignUpSerializer(RegisterSerializer):
