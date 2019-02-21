@@ -6,6 +6,5 @@ from savitreact.notifications.views import (
 
 app_name = "notifications"
 urlpatterns = [
-    path("", view = Notifications.as_view(), name="notifications"),
+    path("", view=Notifications.as_view(), name="notifications"),
 ]
-
