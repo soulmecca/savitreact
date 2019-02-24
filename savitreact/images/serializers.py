@@ -107,3 +107,17 @@ class CreateAndEditImageSerializer(serializers.ModelSerializer):
             'location',
             'caption'
         )
+
+
+class InputImageSerializer(serializers.ModelSerializer):
+
+    tags = TagListSerializerField()
+
+    class Meta:
+        model = models.Image
+        fields = {
+            'file',
+            'location',
+            'caption',
+            'tags'
+        }
