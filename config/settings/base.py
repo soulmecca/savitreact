@@ -3,6 +3,8 @@ Base settings to build other settings files upon.
 """
 
 import environ
+import mimetypes
+mimetypes.add_type('text/css', '.css', True)
 
 ROOT_DIR = environ.Path(__file__) - 3  # (savitreact/config/settings/base.py - 3 = savitreact/)
 APPS_DIR = ROOT_DIR.path('savitreact')
